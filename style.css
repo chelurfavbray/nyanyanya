@@ -1,0 +1,205 @@
+:root{
+    --primary: #fff;
+    --bg-color: #f27c7c;
+    --bg-envelope-color: #f5edd1;
+    --envelope-tab: hsl(44, 58%, 82%);
+    --envelope-cover: #e6cfa7;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --txt-color: #444;
+    --heart-color: rgb(255, 32, 32);
+  }
+  body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+  .container > .envelope-wrapper {
+    background: var(--bg-envelope-color);
+    box-shadow: 0 0 40px var(--shadow-color);
+  }
+  .envelope-wrapper > .envelope {
+    position: relative;
+    width: 300px;
+    height: 230px;
+  }
+  .envelope-wrapper > .envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    border-top: 130px solid var(--envelope-tab);
+    border-right: 150px solid transparent;
+    border-left: 150px solid transparent;
+    transform-origin: top;
+    transition: all 0.5s ease-in-out 0.7s;
+  }
+  .envelope-wrapper > .envelope::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    width: 0px;
+    height: 0px;
+    border-top: 130px solid transparent;
+    border-right: 150px solid var(--envelope-cover);
+    border-bottom: 100px solid var(--envelope-cover);
+    border-left: 150px solid var(--envelope-cover);
+  }
+  .envelope > .letter {
+    position: absolute;
+    right: 20%;
+    bottom: 0;
+    width: 54%;
+    height: 80%;
+    background: var(--primary);
+    text-align: center;
+    transition: all 1s ease-in-out;
+    box-shadow: 0 0 5px var(--shadow-color);
+    padding: 10px 10px;
+  }
+  
+  .envelope > .letter > .text {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--txt-color);
+    text-align: left;
+    font-size: 8px;
+  }
+  .heart {
+    position: absolute;
+    top: 50%;
+    left: 19.55%;
+    width: 15px;
+    height: 15px;
+    background: var(--heart-color);
+    z-index: 4;
+    transform: translate(-50%, -20%) rotate(45deg);
+    transition: transform 0.5s ease-in-out 1s;
+    box-shadow: 0 1px 6px var(--shadow-color);
+    cursor: pointer;
+  }
+  .heart:before, 
+  .heart:after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--heart-color);
+    border-radius: 50%;
+  }
+  .heart:before {
+    top: -7.5px;
+  }
+  .heart:after {
+    right: 7.5px;
+  }
+  .flap > .envelope:before {
+    transform: rotateX(180deg);
+    z-index: 0;
+  }
+  .flap > .envelope > .letter {
+    bottom: 100px;
+    transform: scale(1.5);
+    transition-delay: 1s;
+  }
+  .flap > .heart {
+    transform: rotate(90deg);
+    transition-delay: 0.4s;
+  }
+  .slider-wrapper {
+    position: relative;
+    max-width: 48rem;
+    margin: 0 auto;
+    margin-left: 70px;
+  }
+  
+  .slider {
+    display: flex;
+    aspect-ratio: 9 / 6;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    border-radius: 0.5rem;
+    -ms-overflow-style: none; /* Hide scrollbar IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+  }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .slider::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .slider img {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+  }
+  
+  .slider-nav {
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  
+  .slider-nav a {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.75;
+    transition: opacity ease 250ms;
+  }
+  
+  .slider-nav a:hover {
+    opacity: 1;
+  }
+  .click{ /*tulisan link*/
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 90%;
+    text-align: center;
+  }
+  #audioPlayerWrapper {
+    position: absolute;
+    border-top: 130px solid transparent;
+    border-right: 150px;
+    border-bottom: 100px;
+    border-left: 150px;
+    top: calc(50% + 30px); 
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 300px;
+    height: 50px;
+    z-index: 10; /* Ensure it's above the envelope wrapper */
+}
+
+#audioPlayer {
+    width: 100%;
+    height: 100%;
+    background: #f07171;
+}
+ #tulisanSay {
+  position: absolute;
+  width : 100%;
+  height : 100%;
+  text-align: center;
+  margin-top: 215px;
+  font-family: Georgia, serif;
+  color: #fff;
+ }
+ 
+
+
